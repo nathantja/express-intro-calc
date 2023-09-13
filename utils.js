@@ -1,3 +1,5 @@
+"use strict";
+
 const { BadRequestError } = require("./expressError");
 
 
@@ -6,6 +8,17 @@ const { BadRequestError } = require("./expressError");
 function convertStrNums(strNums) {
   // if the conversion isn't successful, throw a BadRequestError and will
   // be handled in your route
+  const nums = [];
+
+  try {
+    for (const num of strNums) {
+      nums.push(+num);
+    }
+  } catch {
+    throw new BadRequestError();
+  }
+
+  return nums;
 }
 
 

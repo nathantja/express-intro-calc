@@ -19,48 +19,48 @@ const MISSING = "Expected key `nums` with comma-separated list of numbers.";
 app.get("/mean", function (req, res) {
   if (req.query.nums === undefined) throw new BadRequestError("nums are required");
 
+  let mean;
+
   try {
     const nums = convertStrNums(req.query.nums.split(","));
+    mean = findMean(nums);
   } catch (err) {
-    console.log(err);
-    debugger;
     throw new BadRequestError(`${err.message}`);
   }
 
-
-  const mean = findMean(nums);
-
-  return res.json({ "operation": "mean", "value": mean });
+  return res.json({ "operation": "mean", "value": mean })
 });
 
 /** Finds median of nums in qs: returns {operation: "median", result } */
-app.get("/median", function (req, res) {
+app.get("/median", function(req, res) {
   if (req.query.nums === undefined) throw new BadRequestError("nums are required");
+
+  let median;
 
   try {
     const nums = convertStrNums(req.query.nums.split(","));
+    median = findMedian(nums);
   } catch (err) {
     throw new BadRequestError(`${err.message}`);
   }
 
-  const median = findMedian(nums);
-
-  return res.json({ "operation": "median", "value": median });
+  return res.json({ "operation": "median", "value": median })
 });
 
 /** Finds mode of nums in qs: returns {operation: "mode", result } */
-app.get("/mode", function (req, res) {
+app.get("/mode", function(req, res) {
   if (req.query.nums === undefined) throw new BadRequestError("nums are required");
+
+  let mode;
 
   try {
     const nums = convertStrNums(req.query.nums.split(","));
+    mode = findMode(nums);
   } catch (err) {
     throw new BadRequestError(`${err.message}`);
   }
 
-  const mode = findMode(nums);
-
-  return res.json({ "operation": "mode", "value": mode });
+  return res.json({ "operation": "mode", "value": mode })
 });
 
 

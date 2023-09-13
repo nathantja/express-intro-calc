@@ -22,7 +22,7 @@ app.get("/mean", function (req, res) {
   try {
     const nums = convertStrNums(req.query.nums.split(","));
   } catch (err) {
-    console.log(err)
+    console.log(err);
     debugger;
     throw new BadRequestError(`${err.message}`);
   }
@@ -30,11 +30,11 @@ app.get("/mean", function (req, res) {
 
   const mean = findMean(nums);
 
-  return res.json({ "operation": "mean", "value": mean })
+  return res.json({ "operation": "mean", "value": mean });
 });
 
 /** Finds median of nums in qs: returns {operation: "median", result } */
-app.get("/median", function(req, res) {
+app.get("/median", function (req, res) {
   if (req.query.nums === undefined) throw new BadRequestError("nums are required");
 
   try {
@@ -45,11 +45,11 @@ app.get("/median", function(req, res) {
 
   const median = findMedian(nums);
 
-  return res.json({ "operation": "median", "value": median })
+  return res.json({ "operation": "median", "value": median });
 });
 
 /** Finds mode of nums in qs: returns {operation: "mode", result } */
-app.get("/mode", function(req, res) {
+app.get("/mode", function (req, res) {
   if (req.query.nums === undefined) throw new BadRequestError("nums are required");
 
   try {
@@ -60,7 +60,7 @@ app.get("/mode", function(req, res) {
 
   const mode = findMode(nums);
 
-  return res.json({ "operation": "mode", "value": mode })
+  return res.json({ "operation": "mode", "value": mode });
 });
 
 

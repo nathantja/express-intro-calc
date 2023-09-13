@@ -13,10 +13,9 @@ function convertStrNums(strNums) {
   for (const num of strNums) {
     if (isNaN(num)) {
       throw new BadRequestError(`${num} is not a number`);
-    }else {
+    } else {
       nums.push(+num);
     }
-
   }
 
   return nums;

@@ -11,12 +11,11 @@ function convertStrNums(strNums) {
   const nums = [];
 
   for (const num of strNums) {
-    if (isNaN(num)) {
+    if (isNaN(Number(num))) {
       throw new BadRequestError(`${num} is not a number`);
     }else {
-      nums.push(+num);
+      nums.push(Number(num));
     }
-
   }
 
   return nums;

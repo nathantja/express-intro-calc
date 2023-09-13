@@ -41,6 +41,8 @@ app.get("/median", function(req, res) {
     const nums = convertStrNums(req.query.nums.split(","));
     median = findMedian(nums);
   } catch (err) {
+
+    //FIXME: don't need to throw another error, will be handled by error handler
     throw new BadRequestError(`${err.message}`);
   }
 

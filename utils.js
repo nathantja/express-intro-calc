@@ -10,12 +10,13 @@ function convertStrNums(strNums) {
   // be handled in your route
   const nums = [];
 
-  try {
-    for (const num of strNums) {
+  for (const num of strNums) {
+    if (isNaN(num)) {
+      throw new BadRequestError(`${num} is not a number`);
+    }else {
       nums.push(+num);
     }
-  } catch {
-    throw new BadRequestError();
+
   }
 
   return nums;
